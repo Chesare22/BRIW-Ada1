@@ -29,10 +29,24 @@ const Queries = (() => {
 })()
 
 
+const Events = (() => {
+  const onEnter = handler => event => {
+    if (event.key === 'Enter') {
+      handler(event)
+    }
+  }
+
+  return Object.freeze({ onEnter })
+})()
+
+
 const searchInput = document.getElementById('search-input')
 const searchButton = document.getElementById('search-button')
 
 
-searchButton.addEventListener('click', () => {
+const searchEventListener = () => {
   Queries.search(searchInput.value).then(console.log)
-})
+}
+
+searchButton.addEventListener('click', searchEventListener)
+searchInput.addEventListener('keyup', Events.onEnter(searchEventListener))
