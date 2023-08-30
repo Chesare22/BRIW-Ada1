@@ -1,7 +1,6 @@
 {
   "env": {
     "browser": true,
-    "node": true,
     "es2020": true
   },
   "extends": [
@@ -9,8 +8,7 @@
     "@sumerian"
   ],
   "parserOptions": {
-    "ecmaVersion": 11,
-    "sourceType": "module"
+    "ecmaVersion": 11
   },
   "rules": {
     "eol-last":"error"
