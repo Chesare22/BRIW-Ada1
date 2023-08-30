@@ -1,3 +1,32 @@
 body {
   background-color: antiquewhite;
 }
+
+.search-bar {
+  position: relative;
+  display: grid;
+  column-gap: 0.25rem;
+  justify-content: start;
+  grid-template-areas:
+    "label input button"
+    ". error-message .";
+  justify-items: start;
+}
+
+.error-message {
+  position: absolute;
+  color: #f44336;
+  grid-area: error-message;
+}
+
+.search-bar-label {
+  grid-area: label;
+}
+
+.search-bar-input {
+  grid-area: input;
+}
+
+.search-bar-button {
+  grid-area: button;
+}

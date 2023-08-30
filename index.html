@@ -18,14 +18,17 @@
   </svg>
 
   <!-- Search input -->
-  <label for="search">Buscar artículo en Wikipedia:</label>
-  <input type="search" id="search-input" name="search" />
-  <button id="search-button">
-    Buscar
+  <div class="search-bar">
+    <label for="search" class="search-bar-label">Buscar artículo en Wikipedia:</label>
+    <input type="search" id="search-input" name="search" class="search-bar-input"/>
+    <button id="search-button" class="search-bar-button">
+      Buscar
+    </button>
+    <span id="error-message" class="error-message"></span>
+  </div>
     <!-- <svg id="search-button-loader" viewBox="0 0 100 100" width="16" height="16">
       <use xlink:href="#loader" />
     </svg> -->
-  </button>
 </body>
 
 </html>

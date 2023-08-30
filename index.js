@@ -40,12 +40,32 @@ const Events = (() => {
 })()
 
 
+const View = (() => {
+  const showErrorMessage = message => {
+    const errorMessageElement = document.getElementById('error-message')
+    errorMessageElement.innerText = message
+  }
+
+  const hideErrorMessage = () => showErrorMessage('')
+
+  return Object.freeze({ showErrorMessage, hideErrorMessage })
+})()
+
+
 const searchInput = document.getElementById('search-input')
 const searchButton = document.getElementById('search-button')
 
 
 const searchEventListener = () => {
-  Queries.search(searchInput.value).then(console.log)
+  const searchedValue = searchInput.value
+  if (searchedValue === '') {
+    View.showErrorMessage('La búsqueda no puede ser vacía')
+    return
+  } else {
+    View.hideErrorMessage()
+  }
+
+  Queries.search(searchedValue).then(console.log)
 }
 
 searchButton.addEventListener('click', searchEventListener)
