@@ -1,10 +1,11 @@
-/* global View:readonly Queries:readonly Events:readonly */
+/* global View:readonly Queries:readonly Events:readonly List:readonly */
 
 let cache = Object.freeze({})
 let currentSearch = ''
 
 const selectAndShowArticles = () => {
-  const searchedArticles = cache[currentSearch]
+  const sortCriterion = View.getSortCriterion()
+  const searchedArticles = cache[currentSearch][sortCriterion]
   const articlesOfFirstPage = searchedArticles.slice(0, 10)
   View.showArticles(articlesOfFirstPage)
 }
@@ -12,7 +13,11 @@ const selectAndShowArticles = () => {
 const saveArticlesInCache = key => searchedArticles => {
   cache = Object.freeze({
     ...cache,
-    [key]: searchedArticles,
+    [key]: {
+      relevance: searchedArticles,
+      date: List.sortBy('date')([ ...searchedArticles ]),
+      size: List.sortBy('size')([ ...searchedArticles ]),
+    },
   })
 }
 
@@ -35,6 +40,10 @@ const searchEventListener = () => {
   } else {
     Queries
       .searchAll(searchedValue)
+      .then(List.map(({ timestamp, ...article }) => ({
+        date: new Date(timestamp),
+        ...article,
+      })))
       .then(saveArticlesInCache(searchedValue))
       .then(selectAndShowArticles)
   }

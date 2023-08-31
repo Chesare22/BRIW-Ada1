@@ -20,7 +20,8 @@ body {
   justify-content: start;
   grid-template-areas:
     "label input button"
-    ". error-message .";
+    ". error-message ."
+    "sort-criterion sort-criterion sort-criterion";
   justify-items: start;
 }
 
@@ -40,6 +41,15 @@ body {
 
 .search-bar-button {
   grid-area: button;
+}
+
+.sort-criterion {
+  grid-area: sort-criterion;
+}
+
+.radio-buttons-container {
+  display: grid;
+  grid-template-columns: auto;
 }
 
 
