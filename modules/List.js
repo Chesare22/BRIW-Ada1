@@ -1,7 +1,7 @@
 /* exported List */
 const List = (() => {
-  const sortBy = key => array =>
-    array.sort((elementA, elementB) => elementA[key] - elementB[key])
+  const sortDescendingBy = key => array =>
+    array.sort((elementA, elementB) => elementB[key] - elementA[key])
 
 
   const map = fun => arr =>
@@ -9,7 +9,7 @@ const List = (() => {
 
 
   return Object.freeze({
-    sortBy,
+    sortDescendingBy,
     map,
   })
 })()

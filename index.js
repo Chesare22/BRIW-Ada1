@@ -15,8 +15,8 @@ const saveArticlesInCache = key => searchedArticles => {
     ...cache,
     [key]: {
       relevance: searchedArticles,
-      date: List.sortBy('date')([ ...searchedArticles ]),
-      size: List.sortBy('size')([ ...searchedArticles ]),
+      date: List.sortDescendingBy('date')([ ...searchedArticles ]),
+      size: List.sortDescendingBy('size')([ ...searchedArticles ]),
     },
   })
 }
