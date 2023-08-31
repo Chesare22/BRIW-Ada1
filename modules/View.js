@@ -27,8 +27,9 @@ const View = (() => {
 
 
   const showArticles = articles => {
-    const resultsNode = document.getElementById('article-results')
-    resultsNode.replaceChildren(...articles.map(articleToHtmlElement))
+    const articleElements = articles.map(articleToHtmlElement)
+    const articlesContainerElement = document.getElementById('articles')
+    articlesContainerElement.replaceChildren(...articleElements)
   }
 
 
