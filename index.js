@@ -13,7 +13,11 @@ const searchEventListener = () => {
     View.hideErrorMessage()
   }
 
-  Queries.search(searchedValue).then(console.log)
+  Queries.search(searchedValue)
+    .then(({ query }) => {
+      const articlesOfFirstPage = query.search.slice(0, 10)
+      View.showArticles(articlesOfFirstPage)
+    })
 }
 
 searchButton.addEventListener('click', searchEventListener)

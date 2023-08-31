@@ -5,7 +5,34 @@ const View = (() => {
     errorMessageElement.innerText = message
   }
 
+
   const hideErrorMessage = () => showErrorMessage('')
 
-  return Object.freeze({ showErrorMessage, hideErrorMessage })
+
+  const articleToHtmlElement = ({ title, pageid, snippet }) => {
+    const titleElement = document.createElement('a')
+    titleElement.setAttribute('href', `https://es.wikipedia.org/?curid=${pageid}`)
+    titleElement.innerText = title
+
+    const snippetElement = document.createElement('p')
+    snippetElement.innerHTML = snippet
+
+    const containerElement = document.createElement('div')
+    containerElement.appendChild(titleElement)
+    containerElement.appendChild(snippetElement)
+    return containerElement
+  }
+
+
+  const showArticles = articles => {
+    const resultsNode = document.getElementById('article-results')
+    resultsNode.replaceChildren(...articles.map(articleToHtmlElement))
+  }
+
+
+  return Object.freeze({
+    showErrorMessage,
+    hideErrorMessage,
+    showArticles,
+  })
 })()
