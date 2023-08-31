@@ -1,8 +1,23 @@
 /* global View:readonly Queries:readonly Events:readonly */
 
+let cache = Object.freeze({})
+let currentSearch = ''
+
+const selectAndShowArticles = () => {
+  const searchedArticles = cache[currentSearch]
+  const articlesOfFirstPage = searchedArticles.slice(0, 10)
+  View.showArticles(articlesOfFirstPage)
+}
+
+const saveArticlesInCache = key => searchedArticles => {
+  cache = Object.freeze({
+    ...cache,
+    [key]: searchedArticles,
+  })
+}
+
 const searchInput = document.getElementById('search-input')
 const searchButton = document.getElementById('search-button')
-
 
 const searchEventListener = () => {
   const searchedValue = searchInput.value
@@ -13,11 +28,16 @@ const searchEventListener = () => {
     View.hideErrorMessage()
   }
 
-  Queries.searchAll(searchedValue)
-    .then(allArticles => {
-      const articlesOfFirstPage = allArticles.slice(0, 10)
-      View.showArticles(articlesOfFirstPage)
-    })
+  currentSearch = searchedValue
+
+  if (cache[searchedValue]) {
+    selectAndShowArticles()
+  } else {
+    Queries
+      .searchAll(searchedValue)
+      .then(saveArticlesInCache(searchedValue))
+      .then(selectAndShowArticles)
+  }
 }
 
 searchButton.addEventListener('click', searchEventListener)
