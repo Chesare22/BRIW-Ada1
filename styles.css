@@ -12,6 +12,7 @@ body {
     "Segoe UI Symbol";
 }
 
+
 .search-bar {
   position: relative;
   display: grid;
@@ -39,4 +40,22 @@ body {
 
 .search-bar-button {
   grid-area: button;
+}
+
+
+.article-title {
+  font-size: 1.25em;
+  font-weight: 400;
+  text-decoration: none;
+}
+.article-title:hover{
+  text-decoration: underline;
+}
+
+.article-snippet {
+  font-size: 0.875em;
+  margin-top: 0;
+}
+.article-snippet .searchmatch {
+  font-weight: 600;
 }
