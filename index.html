@@ -21,20 +21,21 @@
     </symbol>
   </svg>
 
-  <!-- Search input -->
-  <div class="search-bar">
-    <label for="search" class="search-bar-label">Buscar artículo en Wikipedia:</label>
-    <input type="search" id="search-input" name="search" class="search-bar-input"/>
-    <button id="search-button" class="search-bar-button">
-      Buscar
-    </button>
-    <span id="error-message" class="error-message"></span>
-    <fieldset id="sort-criterion" class="sort-criterion">
-      <legend>Ordenar por:</legend>
-
-      <div class="radio-buttons-container">
-        <div>
-          <input type="radio" name="sort-criterion" id="sort-by-relevance" value="relevance" checked />
+  <main>
+    <!-- Search input -->
+    <div class="search-bar">
+      <label for="search" class="search-bar-label">Buscar artículo en Wikipedia:</label>
+      <input type="search" id="search-input" name="search" class="search-bar-input"/>
+      <button id="search-button" class="search-bar-button">
+        Buscar
+      </button>
+      <span id="error-message" class="error-message"></span>
+      <fieldset id="sort-criterion" class="sort-criterion">
+        <legend>Ordenar por:</legend>
+        
+        <div class="radio-buttons-container">
+          <div>
+            <input type="radio" name="sort-criterion" id="sort-by-relevance" value="relevance" checked />
           <label for="sort-by-relevance">Relevancia</label>
         </div>
         
@@ -47,13 +48,13 @@
           <input type="radio" name="sort-criterion" id="sort-by-size" value="size" />
           <label for="sort-by-size">Tamaño</label>
         </div>
-      </div>
-    </fieldset>
-  </div>
-  <div id="articles"></div>
-    <!-- <svg id="search-button-loader" viewBox="0 0 100 100" width="16" height="16">
-      <use xlink:href="#loader" />
-    </svg> -->
+      </fieldset>
+    </div>
+    <div id="articles" class="articles-container"></div>
+  </main>
+  <!-- <svg id="search-button-loader" viewBox="0 0 100 100" width="16" height="16">
+    <use xlink:href="#loader" />
+  </svg> -->
 </body>
 
 </html>

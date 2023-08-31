@@ -12,6 +12,13 @@
   },
   "rules": {
     "eol-last":"error",
-    "implicit-arrow-linebreak": "off"
+    "implicit-arrow-linebreak": "off",
+    "object-curly-newline": [
+      "error",
+      {
+        "consistent": true,
+        "multiline": true
+      }
+    ]
   }
 }
