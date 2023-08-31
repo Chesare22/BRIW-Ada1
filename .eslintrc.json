@@ -11,6 +11,7 @@
     "ecmaVersion": 11
   },
   "rules": {
-    "eol-last":"error"
+    "eol-last":"error",
+    "implicit-arrow-linebreak": "off"
   }
 }

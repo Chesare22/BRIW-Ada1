@@ -13,9 +13,9 @@ const searchEventListener = () => {
     View.hideErrorMessage()
   }
 
-  Queries.search(searchedValue)
-    .then(({ query }) => {
-      const articlesOfFirstPage = query.search.slice(0, 10)
+  Queries.searchAll(searchedValue)
+    .then(allArticles => {
+      const articlesOfFirstPage = allArticles.slice(0, 10)
       View.showArticles(articlesOfFirstPage)
     })
 }

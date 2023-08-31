@@ -26,5 +26,19 @@ const Queries = (() => {
       .then(response => response.json())
   }
 
-  return Object.freeze({ search })
+  const _searchAll = previousHits => offset => srsearch =>
+    search(srsearch, offset)
+      .then(result => {
+        const totalHitsSoFar = Object.freeze([ ...previousHits, ...result.query.search ])
+        if (result.continue) {
+          return _searchAll(totalHitsSoFar)(result.continue.sroffset)(srsearch)
+        } else {
+          return totalHitsSoFar
+        }
+      })
+
+  const searchAll = _searchAll([])(0)
+
+
+  return Object.freeze({ searchAll })
 })()
